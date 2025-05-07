@@ -6,7 +6,11 @@
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "lint": "eslint . --max-warnings 0 --cache",
+    "lint:fix": "eslint . --max-warnings 0 --cache --fix",
+    "format": "prettier . --check --cache",
+    "format:fix": "prettier . --write --cache"
   },
   "dependencies": {
     "@react-router/fs-routes": "^7.5.3",
