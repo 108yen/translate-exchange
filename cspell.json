@@ -1,3 +1,14 @@
 {
-  "words": []
+  "words": ["eslintcache", "lefthook", "nonconstructor", "nonoctal"],
+  "ignorePaths": [
+    "node_modules",
+    "dist",
+    "coverage",
+    "build",
+    ".github",
+    ".vscode",
+    ".idea",
+    ".DS_Store",
+    ".eslintcache"
+  ]
 }
