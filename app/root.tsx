@@ -1,4 +1,11 @@
-import { Center, Code, Heading, Text, UIProvider } from "@yamada-ui/react"
+import {
+  Center,
+  Code,
+  ColorModeScript,
+  Heading,
+  Text,
+  UIProvider,
+} from "@yamada-ui/react"
 import {
   isRouteErrorResponse,
   Links,
@@ -8,6 +15,7 @@ import {
   ScrollRestoration,
 } from "react-router"
 import type { Route } from "./+types/root"
+import { config } from "./theme"
 
 export const links: Route.LinksFunction = () => [
   { href: "https://fonts.googleapis.com", rel: "preconnect" },
@@ -68,8 +76,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body suppressHydrationWarning>
-        <UIProvider>{children}</UIProvider>
+        <UIProvider config={config}>{children}</UIProvider>
 
+        <ColorModeScript initialColorMode={config.initialColorMode} />
         <ScrollRestoration />
         <Scripts />
       </body>
