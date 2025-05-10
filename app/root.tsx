@@ -1,3 +1,4 @@
+import { UIProvider } from "@yamada-ui/react"
 import {
   isRouteErrorResponse,
   Links,
@@ -56,15 +57,16 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="ja" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
+      <body suppressHydrationWarning>
+        <UIProvider>{children}</UIProvider>
+
         <ScrollRestoration />
         <Scripts />
       </body>
