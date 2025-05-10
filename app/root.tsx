@@ -1,4 +1,4 @@
-import { UIProvider } from "@yamada-ui/react"
+import { Center, Code, Heading, Text, UIProvider } from "@yamada-ui/react"
 import {
   isRouteErrorResponse,
   Links,
@@ -43,15 +43,18 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main>
-      <h1>{message}</h1>
-      <p>{details}</p>
+    <Center as="main" flexDirection="column" h="100vh">
+      <Heading as="h1" size="4xl">
+        {message}
+      </Heading>
+
+      <Text>{details}</Text>
       {stack && (
         <pre>
-          <code>{stack}</code>
+          <Code>{stack}</Code>
         </pre>
       )}
-    </main>
+    </Center>
   )
 }
 
