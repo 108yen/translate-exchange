@@ -3,6 +3,7 @@ import {
   CardBody,
   CardHeader,
   Heading,
+  HStack,
   Input,
   List,
   ListItem,
@@ -14,12 +15,36 @@ import {
 export function Home() {
   return (
     <VStack m="md" separator={<Separator />}>
-      <Card colorScheme="gray" variant="subtle">
+      <Card colorScheme="teal" variant="subtle">
         <CardBody>
           <List>
             <ListItem>
-              <Input value="1 USドル" />
+              <HStack
+                border="1px solid"
+                borderColor="black"
+                borderRadius="md"
+                h="6xs"
+                separator={<Separator h="7xs" />}
+              >
+                <Input
+                  _active={{ borderColor: "none" }}
+                  _focusVisible={{ borderColor: "none" }}
+                  _hover={{ borderColor: "none" }}
+                  borderColor="transparent"
+                  value="1"
+                />
+
+                <Input
+                  _active={{ borderColor: "none" }}
+                  _focusVisible={{ borderColor: "none" }}
+                  _hover={{ borderColor: "none" }}
+                  borderColor="transparent"
+                  textAlign="end"
+                  value="USドル"
+                />
+              </HStack>
             </ListItem>
+
             <ListItem>
               <Input value="1 円" />
             </ListItem>
@@ -33,7 +58,14 @@ export function Home() {
         </CardHeader>
 
         <CardBody>
-          <Textarea placeholder="Hello world!" />
+          <Textarea
+            _active={{ borderColor: "none" }}
+            _focusVisible={{ borderColor: "none" }}
+            _hover={{ borderColor: "none" }}
+            borderColor="transparent"
+            p={0}
+            placeholder="Hello world!"
+          />
         </CardBody>
       </Card>
     </VStack>
