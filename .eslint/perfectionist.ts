@@ -14,5 +14,11 @@ export const perfectionistConfig: Linter.Config = {
       "error",
       { newlinesBetween: "never", type: "natural" },
     ],
+    "perfectionist/sort-modules": [
+      "error",
+      {
+        partitionByNewLine: true,
+      },
+    ],
   },
 }
