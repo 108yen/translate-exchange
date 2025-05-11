@@ -1,10 +1,10 @@
-import { Center } from "@yamada-ui/react"
+import { AppLayout } from "app/ui/layouts"
 import { Outlet } from "react-router"
 
 export default function Layout() {
   return (
-    <Center as="main">
+    <AppLayout>
       <Outlet />
-    </Center>
+    </AppLayout>
   )
 }
