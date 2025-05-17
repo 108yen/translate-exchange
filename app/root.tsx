@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import {
   Center,
   Code,
@@ -17,6 +18,16 @@ import {
 import type { Route } from "./+types/root"
 import { config } from "./theme"
 
+// React QueryのQueryClientを作成
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false, // ウィンドウフォーカス時の再フェッチをオフ
+      staleTime: 1000 * 60 * 5, // 5分間はデータをfresh扱い
+    },
+  },
+})
+
 export const links: Route.LinksFunction = () => [
   { href: "https://fonts.googleapis.com", rel: "preconnect" },
   {
@@ -31,7 +42,11 @@ export const links: Route.LinksFunction = () => [
 ]
 
 export default function App() {
-  return <Outlet />
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Outlet />
+    </QueryClientProvider>
+  )
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
