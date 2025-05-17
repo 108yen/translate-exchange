@@ -64,14 +64,17 @@ export const ExchangeRateConverter = () => {
     }
   }
 
-  const query = useQuery<ExchangeRateResult, Error>({
+  const { data, error, isError, isLoading } = useQuery<
+    ExchangeRateResult,
+    Error
+  >({
     queryFn: fetchExchangeRate,
     queryKey: ["exchangeRate", currency1, currency2],
     staleTime: 1000 * 60 * 5,
   })
 
   // エラー時の通知
-  if (query.isError) {
+  if (isError) {
     notice({
       description: "為替レートの取得に失敗しました",
       duration: 3000,
@@ -80,7 +83,7 @@ export const ExchangeRateConverter = () => {
     })
   }
 
-  const currentRate = query.data?.rate ?? DEFAULT_RATE
+  const currentRate = data?.rate ?? DEFAULT_RATE
   const amount2 = ((parseFloat(amount1) || 0) * currentRate).toFixed(2)
 
   // 通貨選択が変更された時のハンドラー
@@ -108,8 +111,8 @@ export const ExchangeRateConverter = () => {
     }
   }
 
-  if (query.isError) {
-    return <Text color="red.500">Error: {query.error?.message}</Text>
+  if (isError) {
+    return <Text color="red.500">Error: {error?.message}</Text>
   }
 
   return (
@@ -131,7 +134,7 @@ export const ExchangeRateConverter = () => {
                 borderColor="transparent"
                 onChange={handleAmount1Change}
                 value={amount1}
-              />{" "}
+              />
               <Select
                 _active={{ borderColor: "none" }}
                 _focusVisible={{ borderColor: "none" }}
@@ -166,7 +169,7 @@ export const ExchangeRateConverter = () => {
                 borderColor="transparent"
                 onChange={handleAmount2Change}
                 value={amount2}
-              />{" "}
+              />
               <Select
                 _active={{ borderColor: "none" }}
                 _focusVisible={{ borderColor: "none" }}
@@ -185,10 +188,10 @@ export const ExchangeRateConverter = () => {
                 ))}
               </Select>
             </HStack>
-          </ListItem>{" "}
+          </ListItem>
           <ListItem mt={2}>
             <Text fontSize="sm">
-              {query.isLoading
+              {isLoading
                 ? "為替レートを取得中..."
                 : `現在のレート: 1 ${currency1} = ${currentRate.toFixed(2)} ${currency2}`}
             </Text>

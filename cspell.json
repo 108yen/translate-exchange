@@ -1,5 +1,14 @@
 {
-  "words": ["eslintcache", "guldo", "lefthook", "nonconstructor", "nonoctal"],
+  "words": [
+    "eslintcache",
+    "guldo",
+    "lefthook",
+    "NICT",
+    "nonconstructor",
+    "nonoctal",
+    "resultset",
+    "VITE"
+  ],
   "ignorePaths": [
     "node_modules",
     "dist",
